@@ -1,0 +1,49 @@
+#Rockstar Halo Finder
+# nohup ./rockstar -c lc_2400box_960_rockstar.cfg >server.out 2>server.err </dev/null &
+# nohup ./rockstar -c auto-rockstar.cfg >writer.out 2>writer.err </dev/null &
+
+PARALLEL_IO = 1
+NUM_BLOCKS = 1152
+#NUM_READERS = 1152
+INBASE = "/scratch/snx3000/farbodh/Doppler_files/Doppler_RSD/gevolution_boxsize_4032_ngrid_4608_lcdm_05062020/output"
+FILENAME = "lcdm_lightcone_cdm.<block>"
+#NUM_SNAPS = 5
+#STARTING_SNAP = 0
+NUM_WRITERS = 11520
+FORK_READERS_FROM_WRITERS = 1
+FORK_PROCESSORS_PER_MACHINE = 12
+DELETE_BINARY_OUTPUT_AFTER_FINISHED = 1
+OUTPUT_FORMAT = BOTH
+OUTBASE = "/scratch/snx3000/farbodh/Doppler_files/Doppler_RSD/gevolution_boxsize_4032_ngrid_4608_lcdm_05062020/output/halos_lightcone"
+
+PERIODIC = 0
+
+LIGHTCONE = 1
+
+LIGHTCONE_ORIGIN = (2100,2100,2100)
+
+FILE_FORMAT = "GADGET2" # or "ART" or "ASCII" or "TIPSY" or "AREPO"
+PARTICLE_MASS = 0       # must specify (in Msun/h) for ART or ASCII
+MIN_HALO_OUTPUT_SIZE = 24
+STRICT_SO_MASSES = 1
+
+# You should specify cosmology parameters only for ASCII formats
+# For GADGET2 and ART, these parameters will be replaced with values from the
+# particle data file
+SCALE_NOW = 1
+#h0 = 0.6732
+#Ol = 0.687954
+#Om = 0.021996
+
+# For GADGET2, you may need to specify conversion parameters.
+# Rockstar's internal units are Mpc/h (lengths) and Msun/h (masses)
+GADGET_LENGTH_CONVERSION = 0.001
+GADGET_MASS_CONVERSION = 1.0e+10 #1.16e+19
+
+FORCE_RES = 0.2 #Force resolution of simulation, in Mpc/h
+
+#IGNORE_PARTICLE_IDS = 1
+
+# For ascii files, the file format is assumed to be:
+# X Y Z VX VY VZ ID
+

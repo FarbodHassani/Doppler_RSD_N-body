@@ -1,0 +1,20 @@
+#!/bin/bash -l
+#
+#SBATCH --account=s969
+#SBATCH --job-name="rockstar"
+#SBATCH --time=18:00:00
+#SBATCH --partition=normal
+#SBATCH --ntasks=384
+#SBATCH --ntasks-per-node=1
+#SBATCH --constraint=gpu
+#SBATCH --output=writer.%j.o
+#SBATCH --error=writer.%j.e
+
+#======START=====
+module load daint-gpu
+
+./rockstar -c ./rockstar.cfg >>server.o 2>>server.e </dev/null &
+
+sleep 20
+
+srun --ntasks=384 --ntasks-per-node=1 --wait=0 --kill-on-bad-exit --multi-prog ./rockstar_writers.cfg
