@@ -1,0 +1,5 @@
+0-95     gzip ./output/w0d9_cs1_gevolution_snap000_cdm.%o
+96-191     gzip ./output/w0d9_cs1_gevolution_snap001_cdm.%o
+192-287     gzip ./output/w0d9_cs1_gevolution_snap002_cdm.%o
+288-383     gzip ./output/w0d9_cs1_gevolution_snap003_cdm.%o
+384-479     gzip ./output/w0d9_cs1_gevolution_snap004_cdm.%o

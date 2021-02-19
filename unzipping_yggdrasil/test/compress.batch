@@ -1,0 +1,11 @@
+#!/bin/bash -l
+
+#SBATCH --partition=shared-bigmem,public-bigmem,shared-cpu
+#SBATCH --job-name="unzip"
+#SBATCH --time=00:30:00
+#SBATCH --ntasks=1
+#SBATCH --output=gzip.%j.o
+#SBATCH --error=gzip.%j.e
+#======START=====
+
+gzip -d ./../output/w0d9_cs1_gevolution_snap000_cdm.0.gz

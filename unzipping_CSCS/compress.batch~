@@ -1,0 +1,13 @@
+#!/bin/bash -l
+#
+#SBATCH --partition=shared-cpu
+#SBATCH --job-name="gzip_cs1"
+#SBATCH --time=06:00:00
+#SBATCH --ntasks=480
+#SBATCH --ntasks-per-node=12
+#SBATCH --constraint=gpu
+#SBATCH --output=gzip.%j.o
+#SBATCH --error=gzip.%j.e
+#======START=====
+module load daint-gpu
+srun -n $SLURM_NTASKS --ntasks-per-node=$SLURM_NTASKS_PER_NODE --wait=0 --kill-on-bad-exit --multi-prog ./compress.cfg
