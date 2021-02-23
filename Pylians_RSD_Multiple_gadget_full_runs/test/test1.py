@@ -18,20 +18,20 @@ z_redshifts= [3, 2, 1, 0.5, 0 ]
 data = ['lcdm_snap00','w0d9_cs1_gevolution_snap00','w0d9_cs2_em7_gevolution_snap00','kess_cs2e4_4032box_4608_snap00','kess_cs2e7_4032box_4608_snap00']
 
 j=0
-i=0
+i=4
 
-snapshot = '/home/hassani/scratch/Doppler_project/Doppler_runs/"+files[j]+"/redist_output/"+data[j]+str(i)+"_cdm_redist'
+snapshot = "/home/hassani/scratch/Doppler_project/Doppler_runs/"+files[j]+"/redist_output/"+data[j]+str(i)+"_cdm_redist"
 print("Data is loaded","\n")
 
 
 
 # input parameters
-grid    = 20
+grid    = 2304
 BoxSize = 4032 #Mpc/h
 MAS     = 'TSC'
 ptypes   = [1]                     #CDM
-do_RSD   = False                    #dont do redshif-space distortions
-#axis     = 1                       #axis along which place RSD; not used here
+do_RSD   = True                    #dont do redshif-space distortions
+axis     = 2                       #axis along which place RSD; z direction
 verbose = True
 
 delta = MASL.density_field_gadget(snapshot, ptypes, grid, MAS, do_RSD, axis, verbose)
@@ -45,9 +45,6 @@ print("overdensity is computed!","\n")
 
 #############PowerSpectra##############
 
-verbose = True
-MAS="TSC"
-axis=0 # axis. Axis along which compute the quadrupole, hexadecapole and the 2D power spectrum. If the field is in real-space set axis=0. If the field is in redshift-space set axis=0, axis=1 or axis=2 if the redshift-space distortions have been placed along the x-axis, y-axis or z-axis, respectively.
 Pk = PKL.Pk(delta, BoxSize, axis,MAS, threads, verbose)
 print("Powerspectrum is computed!","\n")
 
@@ -59,7 +56,7 @@ Pk4     = Pk.Pk[:,2] #hexadecapole
 Pkphase = Pk.Pkphase #power spectrum of the phases
 Nmodes  = Pk.Nmodes3D
 
-np.save("pk3D_"+files[j]+"_z_"+str(z_redshifts[i]),[k,Pk0,Pk2,Pk4,Pkphase,Nmodes])
+np.save("test_res_pcls_pk3D_"+files[j]+"_z_"+str(z_redshifts[i]),[k,Pk0,Pk2,Pk4,Pkphase,Nmodes])
 print("Powerspectra are printed!","\n")
 
 #############Correlation functions##############
@@ -71,4 +68,4 @@ xi0    = CF.xi[:,0]  #correlation function (monopole)
 xi2    = CF.xi[:,1]  #correlation function (quadrupole)
 xi4    = CF.xi[:,2]  #correlation function (hexadecapole)
 Nmodes = CF.Nmodes3D #number of modes
-np.save("CF_full_"+files[j]+"_z_"+str(z_redshifts[i]),[r,xi0,xi2,xi4,Nmodes])
+np.save("test_res_pcls_pk3D_CF_full_"+files[j]+"_z_"+str(z_redshifts[i]),[r,xi0,xi2,xi4,Nmodes])

@@ -23,6 +23,6 @@ for ((j = 0 ; j < 5 ; j++)); do
 
 	sed -e 's/python ref.py > out.txt/python Code_'$output_dir.py' > out_Code_'$output_dir.txt'/g' run.sh > Run_$output_dir.sh
 	#
-	#sbatch Run_$output_dir.sh
+	sbatch Run_$output_dir.sh
     done
     done
