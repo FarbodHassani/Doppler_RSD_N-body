@@ -99,21 +99,27 @@ print("overdensity for pcls is computed!","\n")
 
 #############PowerSpectra##############
 
-axis=2 # axis. Axis along which compute the quadrupole, hexadecapole and the 2D power spectrum. If the field is in real-space set axis=0. If the field is in redshift-space set axis=0, axis=1 or axis=2 if the redshift-space distortions have been placed along the x-axis, y-axis or z-axis, respectively.
+#axis=2 # axis. Axis along which compute the quadrupole, hexadecapole and the 2D power spectrum. If the field is in real-space set axis=0. If the field is in redshift-space set axis=0, axis=1 or axis=2 if the redshift-space distortions have been placed along the x-axis, y-axis or z-axis, respectively.
 
-Pk = PKL.XPk([delta_halos,delta_pcl], BoxSize, axis, MAS=['TSC','TSC'], threads)
+Pk = PKL.XPk([delta_halos,delta_pcl], BoxSize, axis, MAS, threads)
+
 
 print("Powerspectrum is computed!","\n")
 
 # 3D P(k)
-k       = Pk.k3D
-Pk0     = Pk.Pk[:,0] #monopole
-Pk2     = Pk.Pk[:,1] #quadrupole
-Pk4     = Pk.Pk[:,2] #hexadecapole
-Pkphase = Pk.Pkphase #power spectrum of the phases
-Nmodes  = Pk.Nmodes3D
+k      = Pk.k3D
+Pk0_1  = Pk.Pk[:,0,0]  #monopole of field 1
+Pk0_2  = Pk.Pk[:,0,1]  #monopole of field 2
+Pk2_1  = Pk.Pk[:,1,0]  #quadrupole of field 1
+Pk2_2  = Pk.Pk[:,1,1]  #quadrupole of field 2
+Pk4_1  = Pk.Pk[:,2,0]  #hexadecapole of field 1
+Pk4_2  = Pk.Pk[:,2,1]  #hexadecapole of field 2
+Pk0_X  = Pk.XPk[:,0,0] #monopole of 1-2 cross P(k)
+Pk2_X  = Pk.XPk[:,1,0] #quadrupole of 1-2 cross P(k)
+Pk4_X  = Pk.XPk[:,2,0] #hexadecapole of 1-2 cross P(k)
+Nmodes = Pk.Nmodes3D
 
-np.save("cross_pk3D_"+files[j]+"_z_"+str(z_redshifts[i]),[k,Pk0,Pk2,Pk4,Pkphase,Nmodes])
+np.save("cross_pk3D_"+files[j]+"_z_"+str(z_redshifts[i]),[k, Pk0_1, Pk0_2, Pk2_1, Pk2_2, Pk4_1, Pk4_2, Pk0_X, Pk2_X, Pk4_X, Nmodes])
 print("Powerspectra are printed!","\n")
 
 #############Correlation functions##############
