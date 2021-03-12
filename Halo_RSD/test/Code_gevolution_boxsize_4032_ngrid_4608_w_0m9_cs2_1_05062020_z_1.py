@@ -25,8 +25,8 @@ Omega_b=0.022032/h/h; Omega_cdm=0.12038/h/h;
 Omega_m=Omega_b+Omega_cdm; Omega_Lambda=0;
 Omega_rad=9.1671353942930788e-05;
 
-j=0
-i=4
+j=3
+i=2
 if (j==0):
     w=-1.0
 else:
@@ -44,7 +44,8 @@ Halos = Halos_1[Halos_1[:,41]==-1];
 # input parameters
 grid    = 2500
 BoxSize = 4032 #Mpc/h
-MAS     = 'CIC'
+MAS     = 'TSC'
+verbose = True 
 
 # define the array hosting the density field
 delta = np.zeros((grid,grid,grid), dtype=np.float32)
@@ -54,20 +55,20 @@ c=2.99792458*1.e5;
 # read the particle positions for gevolution
 Num =np.shape(Halos[:,8])[0];
 posx = Halos[:Num,8]; posy=Halos[:Num,9];posz=Halos[:Num,10]; #Mpc/h
-Vz=Halos[:Num,13]; #Mpc/h
+#Vz=Halos[:Num,13]; #Mpc/h
 # We consider that we are observing at z direction and there will be displacemen at that direction due to the velocity of
 # each halo in the snapshots!
 pos = np.zeros((np.shape(posx)[0],3))
 pos[:,0]=posx;
 pos[:,1]=posy;
-pos[:,2]=posz + Vz/Hubble_conf_Mpc(3.0,H0, w ,Omega_kessence,Omega_rad,Omega_m)/c; # Redshift =3
+pos[:,2]=posz #+ Vz/Hubble_conf_Mpc(3.0,H0, w ,Omega_kessence,Omega_rad,Omega_m)/c; # Redshift =3
 pos = pos.astype(np.float32)   #pos should be a numpy float array
 
 print("The RSD contribution for long distant observor is considered!","\n")
 
 
 # compute density field
-MASL.MA(pos,delta,BoxSize,MAS)
+MASL.MA(pos,delta,BoxSize,MAS,verbose=verbose)
 
 print("Density field is computed!","\n")
 
@@ -85,6 +86,10 @@ print("overdensity is computed!","\n")
 print("delta data is saved!","\n")
 
 #############PowerSpectra##############
+
+verbose = True
+MAS="TSC"
+axis=0 # axis. Axis along which compute the quadrupole, hexadecapole and the 2D power spectrum. If the field is in real-space set axis=0. If the field is in redshift-space set axis=0, axis=1 or axis=2 if the redshift-space distortions have been placed along the x-axis, y-axis or z-axis, respectively.
 Pk = PKL.Pk(delta, BoxSize, axis,MAS, threads, verbose)
 print("Powerspectrum is computed!","\n")
 
@@ -96,8 +101,8 @@ Pk4     = Pk.Pk[:,2] #hexadecapole
 Pkphase = Pk.Pkphase #power spectrum of the phases
 Nmodes  = Pk.Nmodes3D
 
-np.save("test_CIC_pk3D_"+files[j]+"_z_"+str(z_redshifts[i]),[k,Pk0,Pk2,Pk4,Pkphase,Nmodes])
-print("test_CIC_Powerspectra are printed!","\n")
+np.save("pk3D_"+files[j]+"_z_"+str(z_redshifts[i]),[k,Pk0,Pk2,Pk4,Pkphase,Nmodes])
+print("Powerspectra are printed!","\n")
 
 #############Correlation functions##############
 # CF parameters
@@ -108,4 +113,4 @@ xi0    = CF.xi[:,0]  #correlation function (monopole)
 xi2    = CF.xi[:,1]  #correlation function (quadrupole)
 xi4    = CF.xi[:,2]  #correlation function (hexadecapole)
 Nmodes = CF.Nmodes3D #number of modes
-np.save("test_CIC_CF_full_"+files[j]+"_z_"+str(z_redshifts[i]),[r,xi0,xi2,xi4,Nmodes])
+np.save("CF_full_"+files[j]+"_z_"+str(z_redshifts[i]),[r,xi0,xi2,xi4,Nmodes])
