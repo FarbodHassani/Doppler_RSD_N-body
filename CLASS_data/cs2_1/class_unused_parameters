@@ -1,0 +1,38 @@
+# List of input/precision parameters passed
+# but not used (just for info)
+#
+IC generator = basic
+template file = sc1_crystal.dat
+tiling factor = 1152, 0, 0
+baryon treatment = blend
+seed = 12345
+correct displacement = yes
+k-domain = sphere
+initial redshift = 100.0
+boxsize = 4032.0
+Ngrid = 4608
+Courant factor = 48
+time step limit = 0.04
+gravity theory = GR
+vector method = elliptic
+radiation treatment = CLASS
+fluid treatment = CLASS
+switch delta_rad = 7
+output path = output/
+generic file base = w0d9_cs1_gevolution
+snapshot file base = w0d9_cs1_gevolution_snap
+lightcone file base = w0d9_cs1_gevolution_lightcone
+Pk file base = w0d9_cs1_gevolution_pk
+Pk bins = 2048
+Pk redshifts = 100, 50, 30, 20, 10, 6, 4, 3, 2.5, 2, 1.5, 1, 0.75, 0.5, 0.25, 0.1, 0
+Pk outputs = phi, B, delta
+snapshot outputs = multi-Gadget2
+snapshot redshifts = 3, 2, 1, 0.5, 0
+lightcone outputs = Gadget2
+lightcone 0 vertex = 0, 0, 0
+lightcone 0 distance = 2015
+lightcone 0 direction = 1, 1, 1
+lightcone 1 vertex = 0, 0, 0
+lightcone 1 distance = 2015, 4690
+lightcone 1 opening half-angle = 25
+lightcone 1 direction = 1, 1, 1
