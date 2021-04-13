@@ -1,0 +1,120 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[      3818,        119]
+NotebookOptionsPosition[      3077,         94]
+NotebookOutlinePosition[      3485,        110]
+CellTagsIndexPosition[      3442,        107]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["b", "2"], "+", " ", 
+     FractionBox[
+      RowBox[{"2", " ", "b", " ", "f"}], "3"], " ", "+", " ", 
+     FractionBox[
+      SuperscriptBox["f", "2"], "5"]}], ")"}], "Pm"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"P2", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"(", " ", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"4", " ", "b", " ", "f"}], "3"], " ", "+", " ", 
+      FractionBox[
+       RowBox[{"4", 
+        SuperscriptBox["f", "2"]}], "7"]}], ")"}], "Pm"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"P4", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"(", " ", 
+     FractionBox[
+      RowBox[{"8", 
+       SuperscriptBox["f", "2"]}], "35"], ")"}], " ", "Pm"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.827296581133806*^9, 3.8272966499947042`*^9}, {
+  3.8273100262511168`*^9, 3.827310032305366*^9}, {3.8273126500457582`*^9, 
+  3.827312658065174*^9}},ExpressionUUID->"01ebaac5-d499-4692-8646-\
+ffb809707421"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"c", "=", "2"}], ";", 
+  RowBox[{"d", "=", "2"}], ";", 
+  RowBox[{"e", "=", "1.4"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"c1", ",", "c2"}], "}"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"4.180579813979008", ",", " ", "0.4249962671954345"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"NSolve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      FractionBox[
+       RowBox[{"35", "x"}], 
+       RowBox[{"6", " "}]], "+", 
+      FractionBox["5", "2"]}], "\[Equal]", "c2"}], "}"}], ",", "x"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.827296655146323*^9, 3.827296813882266*^9}, {
+  3.827296890825941*^9, 3.827296930265444*^9}, {3.827310037154025*^9, 
+  3.827310076119361*^9}, {3.8273102095402613`*^9, 3.8273103666528788`*^9}, {
+  3.8273126660648403`*^9, 3.8273127323275642`*^9}, {3.8273128991460123`*^9, 
+  3.827313026209399*^9}, {3.8273171309960623`*^9, 3.8273172054769287`*^9}},
+ CellLabel->
+  "In[100]:=",ExpressionUUID->"52200afc-41fc-4d78-ba3a-cc788f96978c"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"x", "\[Rule]", 
+    RowBox[{"-", "0.3557149256236398`"}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.8273103180359097`*^9, {3.827310348451885*^9, 3.827310366951993*^9}, 
+   3.827310900620419*^9, 3.8273127349379997`*^9, 3.8273129330272493`*^9, {
+   3.827313014849577*^9, 3.8273130264444437`*^9}, {3.827317143507267*^9, 
+   3.827317163093939*^9}, {3.827317194257525*^9, 3.827317207196048*^9}},
+ CellLabel->
+  "Out[102]=",ExpressionUUID->"26ac9642-f5af-4a1e-8141-bee5f2a5e11f"]
+}, Open  ]]
+},
+WindowSize->{1261, 755},
+WindowMargins->{{Automatic, 92}, {92, Automatic}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->FrontEnd`FileName[{"Creative"}, "PastelColor.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[400, 13, 1031, 33, 159, "Input",ExpressionUUID->"01ebaac5-d499-4692-8646-ffb809707421"],
+Cell[CellGroupData[{
+Cell[1456, 50, 1063, 28, 102, "Input",ExpressionUUID->"52200afc-41fc-4d78-ba3a-cc788f96978c"],
+Cell[2522, 80, 539, 11, 42, "Output",ExpressionUUID->"26ac9642-f5af-4a1e-8141-bee5f2a5e11f"]
+}, Open  ]]
+}
+]
+*)
+
